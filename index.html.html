@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 Shop Key — Trần Quang Huy</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif;}
+        body {background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; color: #fff; padding-bottom: 40px;}
+        .container {max-width: 1200px; margin: 0 auto; padding: 20px;}
+        header {text-align: center; padding: 30px 0;}
+        header h1 {font-size: 28px; background: linear-gradient(90deg, #00d4ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;}
+        header p {color: #aaa; font-size: 15px;}
+
+        .games-grid {display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;}
+        .game-card {background: rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; cursor: pointer; text-align: center;}
+        .game-card:hover {transform: translateY(-5px); border-color: #00d4ff;}
+        .game-card h3 {font-size: 20px; margin-bottom: 10px; color: #00d4ff;}
+        .game-card p {font-size: 14px; color: #aaa; margin-bottom: 15px;}
+        .price {font-size: 22px; font-weight: bold; color: #00ff88; margin-bottom: 15px;}
+        .buy-btn {width: 100%; padding: 12px; background: linear-gradient(90deg, #00d4ff, #0099ff); border: none; border-radius: 8px; color: white; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.2s;}
+        .buy-btn:hover {opacity: 0.9;}
+
+        /* === Danh sách game mở rộng === */
+        .all-games-section {margin-top: 40px; display: none;}
+        .all-games-section.show {display: block;}
+        .section-title {font-size: 20px; color: #00ff88; margin-bottom: 20px; text-align: center;}
+        .close-btn {text-align: center; margin-top: 20px;}
+        .close-btn button {padding: 10px 25px; background: #444; border: none; border-radius: 8px; color: white; cursor: pointer;}
+
+        .payment-section {margin-top: 60px; background: rgba(255,255,255,0.05); border-radius: 16px; padding: 30px; border: 1px solid rgba(255,255,255,0.08);}
+        .payment-section h2 {text-align: center; font-size: 22px; margin-bottom: 25px; color: #00ff88;}
+        .bank-info {background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; margin-bottom: 20px;}
+        .bank-info p {margin: 10px 0; font-size: 16px;}
+        .bank-info span {color: #00d4ff; font-weight: bold;}
+        .qr-box {text-align: center; margin: 25px 0; padding: 20px; background: #fff; border-radius: 12px;}
+        .qr-box img {width: 220px; height: auto;}
+        .qr-box p {color: #333; font-size: 14px; margin-top: 10px;}
+        .note {background: rgba(255, 170, 0, 0.1); border-left: 3px solid #ffaa00; padding: 15px; border-radius: 6px; margin-top: 20px; font-size: 14px; color: #ffdd66; line-height: 1.6;}
+
+        footer {text-align: center; margin-top: 50px; color: #666; font-size: 13px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- === TIÊU ĐỀ === -->
+        <header>
+            <h1>🎮 SHOP KEY GAME</h1>
+            <p>Nhanh chóng • An toàn • Gửi key ngay ✅</p>
+        </header>
+
+        <!-- === DANH SÁCH CHÍNH === -->
+        <div class="games-grid" id="main-games">
+            <div class="game-card">
+                <h3>🔥 KEY FREE FIRE</h3>
+                <p>Key kích hoạt chính hãng</p>
+                <div class="price">20.000đ</div>
+                <button class="buy-btn">MUA NGAY</button>
+            </div>
+
+            <div class="game-card">
+                <h3>🏆 KEY LIÊN QUÂN</h3>
+                <p>Key chính hãng</p>
+                <div class="price">20.000đ</div>
+                <button class="buy-btn">MUA NGAY</button>
+            </div>
+
+            <div class="game-card" onclick="showAllGames()">
+                <h3>🎯 TẤT CẢ CÁC GAME</h3>
+                <p>Nhấn để xem đầy đủ danh sách</p>
+                <div class="price">Xem ngay ↓</div>
+                <button class="buy-btn">XEM TẤT CẢ</button>
+            </div>
+        </div>
+
+        <!-- === DANH SÁCH TẤT CẢ GAME (ẨN BAN ĐẦU) === -->
+        <div class="all-games-section" id="all-games">
+            <h3 class="section-title">📋 DANH SÁCH TẤT CẢ GAME</h3>
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>🧱 Roblox</h3>
+                    <p>Key & Giftcard</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+                <div class="game-card">
+                    <h3>🔫 PUBG Mobile</h3>
+                    <p>Key & Pass</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+                <div class="game-card">
+                    <h3>🎮 Steam Key</h3>
+                    <p>Game bản quyền</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+                <div class="game-card">
+                    <h3>💎 Genshin Impact</h3>
+                    <p>Key & Nạp</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+                <div class="game-card">
+                    <h3>⚡ Minecraft</h3>
+                    <p>Key chính hãng</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+                <div class="game-card">
+                    <h3>🎯 Epic Games</h3>
+                    <p>Key game bản quyền</p>
+                    <div class="price">Liên hệ</div>
+                    <button class="buy-btn">Xem giá</button>
+                </div>
+            </div>
+            <div class="close-btn">
+                <button onclick="hideAllGames()">✖ Đóng danh sách</button>
+            </div>
+        </div>
+
+        <!-- === THANH TOÁN === -->
+        <div class="payment-section">
+            <h2>🏦 THÔNG TIN THANH TOÁN</h2>
+
+            <div class="bank-info">
+                <p>🏛️ Ngân hàng: <span>Vietcombank</span></p>
+                <p>📝 Số tài khoản: <span>9964447934</span></p>
+                <p>👤 Chủ tài khoản: <span>Trần Quang Huy</span></p>
+                <p>💡 Nội dung: <span>Mua key + Tên của bạn</span></p>
+            </div>
+
+            <div class="qr-box">
+                <img src="https://img.vietqr.io/image/VCB-9964447934-compact2.png?amount=0&addInfo=Mua+key+game&accountName=Tran+Quang+Huy" alt="QR Thanh toán Vietcombank">
+                <p>📱 Mở app ngân hàng → Quét mã QR</p>
+            </div>
+
+            <div class="note">
+                ⚠️ Hướng dẫn: Chuyển khoản với nội dung là tên bạn, sau đó chụp biên lai và gửi cho mình qua Telegram. Key sẽ được gửi lại cho bạn ngay sau khi xác nhận thanh toán thành công ✅
+            </div>
+        </div>
+
+        <!-- === FOOTER === -->
+        <footer>
+            <p>🛒 Shop Key — Trần Quang Huy</p>
+            <p>Liên hệ: @shop_qh_key — Hỗ trợ nhanh nhất</p>
+        </footer>
+    </div>
+
+    <!-- === NÚT XEM/DÓNG DANH SÁCH === -->
+    <script>
+        function showAllGames() {
+            document.getElementById('all-games').classList.add('show');
+            document.getElementById('all-games').scrollIntoView({ behavior: 'smooth' });
+        }
+        function hideAllGames() {
+            document.getElementById('all-games').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
